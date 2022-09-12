@@ -1,20 +1,50 @@
 {
-  "name": "app",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "12.3.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "eslint": "8.23.0",
-    "eslint-config-next": "12.3.0"
-  }
+    "name": "app",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@codemirror/lang-css": "^6.0.0",
+        "@codemirror/lang-html": "^6.1.1",
+        "@codemirror/lang-javascript": "^6.0.2",
+        "@codemirror/state": "^6.1.1",
+        "@nextui-org/react": "^1.0.0-beta.9",
+        "@reduxjs/toolkit": "^1.8.5",
+        "@uiw/codemirror-theme-abcdef": "^4.12.1",
+        "@uiw/codemirror-theme-androidstudio": "^4.12.1",
+        "@uiw/codemirror-theme-atomone": "^4.12.1",
+        "@uiw/codemirror-theme-bbedit": "^4.12.1",
+        "@uiw/codemirror-theme-darcula": "^4.12.1",
+        "@uiw/codemirror-theme-dracula": "^4.12.1",
+        "@uiw/codemirror-theme-duotone": "^4.12.1",
+        "@uiw/codemirror-theme-github": "^4.12.1",
+        "@uiw/codemirror-theme-okaidia": "^4.12.1",
+        "@uiw/codemirror-theme-sublime": "^4.12.1",
+        "@uiw/codemirror-theme-xcode": "^4.12.1",
+        "@uiw/react-codemirror": "^4.12.1",
+        "codemirror": "^6.0.1",
+        "daisyui": "^2.25.0",
+        "interactjs": "^1.10.17",
+        "next": "12.3.0",
+        "prismjs": "^1.29.0",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-icons": "^4.4.0",
+        "react-redux": "^8.0.2",
+        "react-slick": "^0.29.0",
+        "redux": "^4.2.0"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.8",
+        "babel-plugin-inline-react-svg": "^2.0.1",
+        "eslint": "8.23.0",
+        "eslint-config-next": "12.3.0",
+        "postcss": "^8.4.16",
+        "tailwindcss": "^3.1.8"
+    }
 }

@@ -1,16 +1,9 @@
 import Head from "next/head";
-import { useEffect, useRef } from "react";
 import Header from "../components/layouts/Header";
-import CodeBlock from "../components/layouts/CodeBlock";
-import { useSelector } from "react-redux";
 import EditorLayout from "../components/layouts/EditorLayout";
+import IframeLayout from "../components/layouts/IframeLayout";
 
 const Home = () => {
-    const iframeElementRef = useRef();
-    const HTMLCode = useSelector((state) => state.root.HTMLCode);
-    const CSSCode = useSelector((state) => state.root.CSSCode);
-    const JSCode = useSelector((state) => state.root.JSCode);
-
     // Leave Site Alert
     // TODO : delete comment for production
     // if (typeof window !== "undefined") {
@@ -18,26 +11,6 @@ const Home = () => {
     //         return "Are you sure you want to leave?";
     //     };
     // }
-
-    useEffect(() => {
-        const markup = `
-            <html>
-                <head>
-                    <style>${CSSCode}</style>
-                </head>
-                <body>
-                    ${HTMLCode}
-                    <script>${JSCode}</script>
-                </body>
-            </html>     
-        `;
-
-        const iframe = iframeElementRef.current.contentWindow.document;
-
-        iframe.open();
-        iframe.write(markup);
-        iframe.close();
-    }, [HTMLCode, JSCode, CSSCode]);
 
     return (
         <div>
@@ -50,10 +23,8 @@ const Home = () => {
             <div className="flex flex-col ">
                 <Header />
                 <EditorLayout />
-                <div className="iframe-container ">
-                    <iframe ref={iframeElementRef} srcDoc={``} className="w-full"></iframe>
-                </div>
             </div>
+            <IframeLayout />
         </div>
     );
 };

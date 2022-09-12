@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import EditorLayout from "../../components/layouts/EditorLayout";
 import Header from "../../components/layouts/Header";
+import IframeLayout from "../../components/layouts/IframeLayout";
 
 import store, { rootActions } from "../../store";
 const apiEndpoint = store.getState().root.api;
@@ -11,12 +12,17 @@ const SavedPen = (props) => {
 
     useEffect(() => {
         dispatch(rootActions.setSavedPen(props.pen));
+        dispatch(rootActions.setCode({ code: props.pen.htmlCode, codeType: "HTML" }));
+        dispatch(rootActions.setCode({ code: props.pen.cssCode, codeType: "CSS" }));
+        dispatch(rootActions.setCode({ code: props.pen.jsCode, codeType: "Javascript" }));
+        dispatch(rootActions.setIsPenSaved(true));
     }, [props.pen]);
 
     return (
         <div className="flex flex-col ">
             <Header />
             <EditorLayout />
+            <IframeLayout />
         </div>
     );
 };

@@ -29,7 +29,7 @@ const CodeEditor = (props) => {
     const savedPen = useSelector((state) => state.root.savedPen);
     const [initialCode, setInitialCode] = useState("");
 
-    const onChange = useCallback((code, viewUpdate) => {
+    const onChange = useCallback((code) => {
         dispatch(rootActions.setCode({ code, codeType: props.editorLang }));
     }, []);
 

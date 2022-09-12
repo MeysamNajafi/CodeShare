@@ -22,10 +22,12 @@ import { abcdef } from "@uiw/codemirror-theme-abcdef";
 import { rootActions } from "../store";
 import { useSelector } from "react-redux";
 
-const Editor = (props) => {
+const CodeEditor = (props) => {
     const dispatch = useDispatch();
     const initialTheme = useSelector((state) => state.root.codeEditorTheme);
     const editorSettings = useSelector((state) => state.root.editorSettings);
+    const savedPen = useSelector((state) => state.root.savedPen);
+    const [initialCode, setInitialCode] = useState("");
 
     const onChange = useCallback((code, viewUpdate) => {
         dispatch(rootActions.setCode({ code, codeType: props.editorLang }));
@@ -35,10 +37,19 @@ const Editor = (props) => {
     const [theme, setTheme] = useState(dracula);
 
     useEffect(() => {
-        if (props.editorLang === "HTML") setEditorLang(html);
-        if (props.editorLang === "CSS") setEditorLang(css);
-        if (props.editorLang === "Javascript") setEditorLang(javascript);
-    }, [props.editorLang]);
+        if (props.editorLang === "HTML") {
+            setEditorLang(html);
+            setInitialCode(savedPen.htmlCode);
+        }
+        if (props.editorLang === "CSS") {
+            setEditorLang(css);
+            setInitialCode(savedPen.cssCode);
+        }
+        if (props.editorLang === "Javascript") {
+            setEditorLang(javascript);
+            setInitialCode(savedPen.jsCode);
+        }
+    }, [props.editorLang, savedPen]);
 
     useEffect(() => {
         if (initialTheme === "abcdef") setTheme(abcdef);
@@ -64,8 +75,9 @@ const Editor = (props) => {
             basicSetup={editorSettings}
             extensions={[editorLang, EditorView.lineWrapping, EditorState.tabSize.of(8)]}
             onChange={onChange}
+            value={initialCode}
         />
     );
 };
 
-export default Editor;
+export default CodeEditor;

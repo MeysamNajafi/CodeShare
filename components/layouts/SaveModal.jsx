@@ -69,7 +69,7 @@ const SaveModal = () => {
             setIsLoading(false);
             closeModalRef.current.click();
         } catch (err) {
-            console.log(err);
+            console.log(err.message);
             setIsLoading(false);
         }
     };

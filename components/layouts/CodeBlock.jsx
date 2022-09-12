@@ -1,4 +1,4 @@
-import Editor from "../Editor";
+import CodeEditor from "../CodeEditor";
 
 const CodeBlock = (props) => {
     const title = props.title;
@@ -10,7 +10,7 @@ const CodeBlock = (props) => {
                 <img width={30} src={icon} />
                 <h3 className=" text-white">{title}</h3>
             </div>
-            <Editor editorLang={title} />
+            <CodeEditor editorLang={title} />
         </div>
     );
 };

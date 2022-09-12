@@ -26,6 +26,7 @@ const rootSlice = createSlice({
         JSCode: "",
         editorSettings: editorSettings || EDITOR_SETTINGS,
         isPenSaved: false,
+        savedPen: {},
     },
     reducers: {
         changeCodeEditorTheme(state, action) {
@@ -44,6 +45,9 @@ const rootSlice = createSlice({
         },
         setIsPenSaved(state, action) {
             state.isPenSaved = action.payload;
+        },
+        setSavedPen(state, action) {
+            state.savedPen = action.payload;
         },
     },
 });

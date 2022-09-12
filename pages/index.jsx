@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import Header from "../components/layouts/Header";
 import CodeBlock from "../components/layouts/CodeBlock";
 import { useSelector } from "react-redux";
+import EditorLayout from "../components/layouts/EditorLayout";
 
 const Home = () => {
     const iframeElementRef = useRef();
@@ -48,19 +49,7 @@ const Home = () => {
 
             <div className="flex flex-col ">
                 <Header />
-                <div className="mx-auto flex basis-96 w-full">
-                    <CodeBlock
-                        icon="https://img.icons8.com/color/48/FFFFFF/html-5--v1.png"
-                        title="HTML"
-                    />
-                    <div className="w-6 bg-[#282A36]"></div>
-                    <CodeBlock icon="https://img.icons8.com/color/48/FFFFFF/css3.png" title="CSS" />
-                    <div className="w-6 bg-[#282A36]"></div>
-                    <CodeBlock
-                        icon="https://img.icons8.com/color/48/FFFFFF/javascript.png"
-                        title="Javascript"
-                    />
-                </div>
+                <EditorLayout />
                 <div className="iframe-container ">
                     <iframe ref={iframeElementRef} srcDoc={``} className="w-full"></iframe>
                 </div>

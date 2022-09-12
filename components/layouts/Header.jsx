@@ -4,9 +4,13 @@ import { rootActions } from "../../store/index";
 import { useDispatch, useSelector } from "react-redux";
 import SettingsModal from "./SettingsModal";
 
-const Header = function (props) {
+const Header = function () {
+    const savedPen = useSelector((state) => state.root.savedPen);
     const dispatch = useDispatch();
     const isPenSaved = useSelector((state) => state.root.isPenSaved);
+    const creatorName = savedPen.creatorName || "Guest";
+    const penName = savedPen.penName || "Untitled";
+
     const changeThemeHandler = (e) => {
         dispatch(rootActions.changeCodeEditorTheme(e.target.value));
         localStorage.setItem("theme", e.target.value);
@@ -15,10 +19,10 @@ const Header = function (props) {
     return (
         <header className=" bg-[#20222d] border-b-[1px] border-b-[#3e404b] text-white flex items-center py-4 px-3 justify-between">
             <div>
-                <h1 className="text-2xl">Simple Button</h1>
+                <h1 className="text-2xl">{penName}</h1>
                 <div className="flex gap-x-1 items-center ">
                     <FiUser size={18} />
-                    <h3 className="  text-gray-300">Meysam Najafi</h3>
+                    <h3 className="  text-gray-300">{creatorName}</h3>
                 </div>
             </div>
             <div className="flex gap-x-2">

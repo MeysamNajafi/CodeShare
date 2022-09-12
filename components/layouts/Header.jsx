@@ -18,7 +18,6 @@ const Header = function () {
     const penName = savedPen.penName || "Untitled";
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState("");
 
     const changeThemeHandler = (e) => {
         dispatch(rootActions.changeCodeEditorTheme(e.target.value));
@@ -35,8 +34,11 @@ const Header = function () {
                 })
             );
             setIsLoading(false);
+            dispatch(
+                rootActions.setNotification({ type: "success", message: "Updated successfully!" })
+            );
         } catch (err) {
-            setError(err.message);
+            dispatch(rootActions.setNotification({ type: "error", message: err.message }));
         }
     };
 

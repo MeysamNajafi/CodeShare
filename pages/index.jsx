@@ -2,6 +2,7 @@ import Head from "next/head";
 import Header from "../components/layouts/Header";
 import EditorLayout from "../components/layouts/EditorLayout";
 import IframeLayout from "../components/layouts/IframeLayout";
+import Notification from "../components/ui/Notification";
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
                 <EditorLayout />
             </div>
             <IframeLayout />
+            <Notification />
         </div>
     );
 };

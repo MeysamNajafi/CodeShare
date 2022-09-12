@@ -27,6 +27,10 @@ const rootSlice = createSlice({
         editorSettings: editorSettings || EDITOR_SETTINGS,
         isPenSaved: false,
         savedPen: {},
+        notification: {
+            type: "", // error, success
+            message: "",
+        },
     },
     reducers: {
         changeCodeEditorTheme(state, action) {
@@ -48,6 +52,9 @@ const rootSlice = createSlice({
         },
         setSavedPen(state, action) {
             state.savedPen = action.payload;
+        },
+        setNotification(state, action) {
+            state.notification = action.payload;
         },
     },
 });

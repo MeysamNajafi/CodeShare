@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import EditorLayout from "../../components/layouts/EditorLayout";
 import Header from "../../components/layouts/Header";
 import IframeLayout from "../../components/layouts/IframeLayout";
+import Notification from "../../components/ui/Notification";
 
 import store, { rootActions } from "../../store";
 const apiEndpoint = store.getState().root.api;
@@ -23,6 +24,7 @@ const SavedPen = (props) => {
             <Header />
             <EditorLayout />
             <IframeLayout />
+            <Notification />
         </div>
     );
 };

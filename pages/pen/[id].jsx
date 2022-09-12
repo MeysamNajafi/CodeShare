@@ -29,7 +29,7 @@ export async function getServerSideProps(context) {
             method: "GET",
         });
         const res = await data.json();
-        if (!res.ok) throw new Error("");
+        if (!data.ok) throw new Error("");
 
         return {
             props: { pen: res.pen },

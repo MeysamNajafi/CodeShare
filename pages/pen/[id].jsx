@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import EditorLayout from "../../components/layouts/EditorLayout";
@@ -20,12 +21,19 @@ const SavedPen = (props) => {
     }, [props.pen]);
 
     return (
-        <div className="flex flex-col ">
-            <Header />
-            <EditorLayout />
-            <IframeLayout />
-            <Notification />
-        </div>
+        <>
+            <Head>
+                <title>CodeShare</title>
+                <meta name="description" content="CodePen Simple Clone" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <div className="flex flex-col ">
+                <Header />
+                <EditorLayout />
+                <IframeLayout />
+                <Notification />
+            </div>
+        </>
     );
 };
 

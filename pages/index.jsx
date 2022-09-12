@@ -6,7 +6,7 @@ import Notification from "../components/ui/Notification";
 
 const Home = () => {
     return (
-        <div>
+        <>
             <Head>
                 <title>CodeShare</title>
                 <meta name="description" content="CodePen Simple Clone" />
@@ -19,7 +19,7 @@ const Home = () => {
             </div>
             <IframeLayout />
             <Notification />
-        </div>
+        </>
     );
 };
 

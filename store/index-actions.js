@@ -15,6 +15,8 @@ export const createPen = (payload) => async (dispatch) => {
         if (!res.ok) throw new Error(data.message);
 
         dispatch(rootActions.setIsPenSaved(true));
+
+        return data.penId;
     } catch (err) {
         throw err;
     }

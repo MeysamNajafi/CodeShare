@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPen } from "../../store/index-actions";
@@ -15,6 +16,7 @@ const SaveModal = () => {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const isPenSaved = useSelector((state) => state.root.isPenSaved);
+    const router = useRouter();
 
     const changeAutoSaveStateHandler = () => {
         setIsAutoSaveEnabled((o) => !o);
@@ -63,7 +65,8 @@ const SaveModal = () => {
                 jsCode: JSCode,
             };
             setIsLoading(true);
-            await dispatch(createPen(data));
+            const penId = await dispatch(createPen(data));
+            router.push("/pen/" + penId);
 
             // Close Modal
             setIsLoading(false);

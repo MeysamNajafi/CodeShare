@@ -4,14 +4,6 @@ import EditorLayout from "../components/layouts/EditorLayout";
 import IframeLayout from "../components/layouts/IframeLayout";
 
 const Home = () => {
-    // Leave Site Alert
-    // TODO : delete comment for production
-    // if (typeof window !== "undefined") {
-    //     window.onbeforeunload = function () {
-    //         return "Are you sure you want to leave?";
-    //     };
-    // }
-
     return (
         <div>
             <Head>

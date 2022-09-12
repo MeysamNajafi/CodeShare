@@ -3,17 +3,41 @@ import SaveModal from "./SaveModal";
 import { rootActions } from "../../store/index";
 import { useDispatch, useSelector } from "react-redux";
 import SettingsModal from "./SettingsModal";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { editPen } from "../../store/index-actions";
 
 const Header = function () {
     const savedPen = useSelector((state) => state.root.savedPen);
-    const dispatch = useDispatch();
     const isPenSaved = useSelector((state) => state.root.isPenSaved);
+    const HTMLCode = useSelector((state) => state.root.HTMLCode);
+    const CSSCode = useSelector((state) => state.root.CSSCode);
+    const JSCode = useSelector((state) => state.root.JSCode);
+    const dispatch = useDispatch();
     const creatorName = savedPen.creatorName || "Guest";
     const penName = savedPen.penName || "Untitled";
+    const router = useRouter();
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState("");
 
     const changeThemeHandler = (e) => {
         dispatch(rootActions.changeCodeEditorTheme(e.target.value));
         localStorage.setItem("theme", e.target.value);
+    };
+
+    const updatePen = async () => {
+        try {
+            setIsLoading(true);
+            await dispatch(
+                editPen({
+                    id: router.query.id,
+                    data: { htmlCode: HTMLCode, cssCode: CSSCode, jsCode: JSCode },
+                })
+            );
+            setIsLoading(false);
+        } catch (err) {
+            setError(err.message);
+        }
     };
 
     return (
@@ -57,19 +81,20 @@ const Header = function () {
                     <span className="ml-1"> Share</span>
                 </button>
 
-                <label htmlFor="save-modal" className="btn btn-success" disabled={isPenSaved}>
-                    {isPenSaved ? (
-                        <>
-                            <FiCheck size={18} />
-                            <span className="ml-1"> Saved!</span>{" "}
-                        </>
-                    ) : (
-                        <>
-                            <FiSave size={18} />
-                            <span className="ml-1"> Save</span>
-                        </>
-                    )}
-                </label>
+                {isPenSaved ? (
+                    <button
+                        onClick={updatePen}
+                        className={isLoading ? "btn btn-success loading" : "btn btn-success "}
+                    >
+                        {!isLoading && <FiSave size={18} />}
+                        <span className="ml-1">Save</span>
+                    </button>
+                ) : (
+                    <label htmlFor="save-modal" className="btn btn-success">
+                        <FiSave size={18} />
+                        <span className="ml-1"> Save</span>
+                    </label>
+                )}
             </div>
             <SaveModal />
             <SettingsModal />

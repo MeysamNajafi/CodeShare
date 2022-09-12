@@ -21,3 +21,20 @@ export const createPen = (payload) => async (dispatch) => {
         throw err;
     }
 };
+
+export const editPen = (payload) => async (dispatch) => {
+    try {
+        const res = await fetch(`${apiEndpoint}/pen/edit/${payload.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload.data),
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message);
+    } catch (err) {
+        throw err;
+    }
+};

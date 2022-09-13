@@ -1,4 +1,4 @@
-import { FiUser, FiSave, FiShare, FiSettings, FiCheck } from "react-icons/fi";
+import { FiUser, FiSave, FiShare, FiSettings } from "react-icons/fi";
 import SaveModal from "./SaveModal";
 import { rootActions } from "../../store/index";
 import { useDispatch, useSelector } from "react-redux";
@@ -86,6 +86,7 @@ const Header = function () {
                 {isPenSaved ? (
                     <button
                         onClick={updatePen}
+                        id="save-pen"
                         className={isLoading ? "btn btn-success loading" : "btn btn-success "}
                     >
                         {!isLoading && <FiSave size={18} />}

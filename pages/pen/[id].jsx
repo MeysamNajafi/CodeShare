@@ -7,6 +7,7 @@ import IframeLayout from "../../components/layouts/IframeLayout";
 import Notification from "../../components/ui/Notification";
 
 import store, { rootActions } from "../../store";
+import { editPen } from "../../store/index-actions";
 const apiEndpoint = store.getState().root.api;
 
 const SavedPen = (props) => {
@@ -18,6 +19,13 @@ const SavedPen = (props) => {
         dispatch(rootActions.setCode({ code: props.pen.cssCode, codeType: "CSS" }));
         dispatch(rootActions.setCode({ code: props.pen.jsCode, codeType: "Javascript" }));
         dispatch(rootActions.setIsPenSaved(true));
+
+        if (props.pen?.autoSave) {
+            setInterval(() => {
+                const saveButton = document.querySelector("#save-pen");
+                saveButton.click();
+            }, props.pen?.autoSaveDuration * 1000);
+        }
     }, [props.pen]);
 
     return (

@@ -1,4 +1,4 @@
-import { FiUser, FiSave, FiShare, FiSettings } from "react-icons/fi";
+import { FiUser, FiSave, FiShare, FiSettings, FiRefreshCw } from "react-icons/fi";
 import SaveModal from "./SaveModal";
 import { rootActions } from "../../store/index";
 import { useDispatch, useSelector } from "react-redux";
@@ -45,7 +45,15 @@ const Header = function () {
     return (
         <header className=" bg-[#20222d] border-b-[1px] border-b-[#3e404b] text-white flex items-center py-4 px-3 justify-between">
             <div>
-                <h1 className="text-2xl">{penName}</h1>
+                <h1 className="text-2xl flex items-center">
+                    {penName}
+                    {savedPen.autoSave && (
+                        <span className="badge badge-success badge-sm ml-1 flex items-center gap-x-1">
+                            <FiRefreshCw size={12} />
+                            Auto save
+                        </span>
+                    )}
+                </h1>
                 <div className="flex gap-x-1 items-center ">
                     <FiUser size={18} />
                     <h3 className="  text-gray-300">{creatorName}</h3>
